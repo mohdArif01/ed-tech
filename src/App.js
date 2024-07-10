@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+
+import Login from "./Components/login";
+import SignUp from "./Components/register";
+import Profile from "./Components/profile";
+import Nav from "./Components/navbar";
+
+import { ToastContainer } from "react-toastify";
+import { auth } from "./Components/firebase";
 
 function App() {
+  const [user, setUser] = useState();
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* <Route path="/" element={user ? <Navigate to="/profile" /> : <Login />} /> */}
+        <Route path="/" element={<Nav />} />
+      </Routes>
+      <ToastContainer />
+    </Router>
   );
 }
 
