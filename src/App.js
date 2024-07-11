@@ -11,6 +11,7 @@ import Login from "./Components/login";
 import SignUp from "./Components/register";
 import Profile from "./Components/profile";
 import Nav from "./Components/navbar";
+import Home from './Page/Home'
 
 import { ToastContainer } from "react-toastify";
 import { auth } from "./Components/firebase";
@@ -27,7 +28,7 @@ function App() {
     <Router>
       <Routes>
         {/* <Route path="/" element={user ? <Navigate to="/profile" /> : <Login />} /> */}
-        <Route path="/" element={<Nav />} />
+        <Route path="/" element={<Home />} />
       </Routes>
       <ToastContainer />
     </Router>
