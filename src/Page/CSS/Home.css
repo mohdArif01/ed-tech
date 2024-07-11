@@ -59,9 +59,21 @@
   }
 
   .card-container{
+    padding-left: 10px;
+    padding-right: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 30px 20px;
     justify-content: center;
     align-items: center;
+  }
+
+  @media only screen and (max-width: 465px){
+    .card-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .card{
+        width: 40vw;
+        height: 40vh;
+    }
   }
